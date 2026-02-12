@@ -1,0 +1,100 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f6fa;
+}
+
+.home-header {
+  background: #2d8cff;
+  color: #fff;
+  padding: 2rem 2.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.home-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-intro {
+  background: #fff;
+  padding: 2.5rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.home-intro h2 {
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.home-intro p {
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.home-cta {
+  padding: 0.75rem 2rem;
+  background: #2d8cff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.home-cta:hover {
+  background: #1a6ed8;
+}
+
+.home-footer {
+  background: #1a2330;
+  color: #e0e6ed;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.company-footer {
+  background: #1a2330;
+  color: #e0e6ed;
+  font-size: 1rem;
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.company-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.company-address {
+  font-size: 0.98rem;
+  color: #b0b8c1;
+}
+
+.company-contact {
+  font-size: 0.97rem;
+  color: #e0e6ed;
+}
+.company-contact a {
+  color: #7ecfff;
+  text-decoration: none;
+  margin: 0 0.2em;
+}
+.company-contact a:hover {
+  text-decoration: underline;
+}
+}

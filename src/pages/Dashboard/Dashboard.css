@@ -1,0 +1,90 @@
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.dashboard-header {
+  background: #2d8cff;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.dashboard-nav {
+  background: #eaf1fb;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.user-details {
+  min-width: 200px;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+
+.dashboard-content {
+  flex: 1;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  margin-left: 2rem;
+}
+
+.dashboard-footer {
+  background: #222;
+  color: #fff;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.company-footer {
+  background: #1a2330;
+  color: #e0e6ed;
+  font-size: 1rem;
+}
+
+.company-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.company-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.company-address {
+  font-size: 0.98rem;
+  color: #b0b8c1;
+}
+
+.company-contact {
+  font-size: 0.97rem;
+  color: #e0e6ed;
+}
+.company-contact a {
+  color: #7ecfff;
+  text-decoration: none;
+  margin: 0 0.2em;
+}
+.company-contact a:hover {
+  text-decoration: underline;
+}
+}
