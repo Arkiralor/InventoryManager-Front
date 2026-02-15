@@ -1,0 +1,63 @@
+# Ruff configuration file for InventoryManager-Front project for any Python files in the project. This file is located at the root of the project.
+
+# Target Python version
+target-version = "py314"
+
+# Line length
+line-length = 120
+
+# Enable auto-fixing
+fix = true
+
+# Select rules to enable
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "RET", # flake8-return
+    "PTH", # flake8-use-pathlib
+]
+
+# Rules to ignore
+ignore = [
+    "F841",   # unused variable
+    "F401",   # unused import,
+    "PTH123", # Allow os.path usage
+    "UP015", # Allow f-string usage for Python 3.11
+    "B007",  # Allow mutable default arguments
+]
+
+# Exclude directories
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "*.egg-info",
+    "node_modules",
+]
+
+# Allow unused variables when prefixed with underscore
+[lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"**/tests/**/*.py" = ["S101"]  # Allow assert in tests
+
+[lint.isort]
+known-first-party = ["inventorymanager"]
+combine-as-imports = true
+
+[format]
+# Use double quotes for strings
+quote-style = "double"
+# Use tabs for indentation
+indent-style = "space"
+# Skip magic trailing comma
+skip-magic-trailing-comma = false
