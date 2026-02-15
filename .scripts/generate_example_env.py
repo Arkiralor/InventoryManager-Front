@@ -24,6 +24,8 @@ def generate_example_env():
     
     # Define descriptions for each environment variable
     descriptions = {
+        "MODE": "Application mode: production, development, or QA",
+        "DEBUG": "Enable/disable debug mode (true or false)",
         "COMPANY_NAME": "The name of your company or organization",
         "COMPANY_ADDRESS": "The physical address of your company",
         "COMPANY_EMAIL": "Contact email address for your company",
@@ -32,6 +34,8 @@ def generate_example_env():
     
     # Define example values for each environment variable
     example_values = {
+        "MODE": '"development"',
+        "DEBUG": '"true"',
         "COMPANY_NAME": '"Your Company Name"',
         "COMPANY_ADDRESS": '"123 Main Street, City, State/Province, Country - Postal Code"',
         "COMPANY_EMAIL": '"contact@yourcompany.com"',

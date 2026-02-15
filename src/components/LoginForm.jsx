@@ -1,10 +1,45 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, Alert } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext.jsx';
 
-function LoginForm({ onLogin }) {
+const FormContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(2),
+  width: '100%',
+  maxWidth: 350,
+  margin: '0 auto',
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(3),
+  borderRadius: theme.spacing(2),
+  boxShadow: theme.shadows[3],
+}));
+
+const FormTitle = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+  textAlign: 'center',
+}));
+
+const ErrorAlert = styled(Alert)(({ theme }) => ({
+  marginTop: theme.spacing(1),
+}));
+
+const SubmitButton = styled(Button)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+}));
+
+/**
+ * LoginForm component for user authentication
+ * @returns {JSX.Element} Login form component
+ */
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,39 +48,27 @@ function LoginForm({ onLogin }) {
       setError('Please enter both email and password.');
       return;
     }
-    // Simulate login
+    // Simulate login - TODO: Replace with actual API call
     if (email === 'user@example.com' && password === 'password') {
-      onLogin && onLogin(email);
+      const userData = { email };
+      const token = 'mock-jwt-token'; // TODO: Get from API response
+      login(userData, token);
+      navigate('/dashboard');
     } else {
       setError('Invalid credentials.');
     }
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        width: '100%',
-        maxWidth: 350,
-        mx: 'auto',
-        bgcolor: 'background.paper',
-        p: 3,
-        borderRadius: 2,
-        boxShadow: 3,
-      }}
-    >
-      <Typography variant="h5" component="h2" sx={{ mb: 2, textAlign: 'center' }}>
+    <FormContainer component="form" onSubmit={handleSubmit}>
+      <FormTitle variant="h5" component="h2">
         Login
-      </Typography>
+      </FormTitle>
       <TextField
         label="Email"
         type="email"
         value={email}
-        onChange={e => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
         variant="outlined"
         required
         fullWidth
@@ -54,25 +77,22 @@ function LoginForm({ onLogin }) {
         label="Password"
         type="password"
         value={password}
-        onChange={e => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
         variant="outlined"
         required
         fullWidth
       />
-      {error && (
-        <Alert severity="error" sx={{ mt: 1 }}>{error}</Alert>
-      )}
-      <Button
+      {error && <ErrorAlert severity="error">{error}</ErrorAlert>}
+      <SubmitButton
         type="submit"
         variant="contained"
         color="primary"
         size="large"
-        sx={{ mt: 2 }}
         fullWidth
       >
         Login
-      </Button>
-    </Box>
+      </SubmitButton>
+    </FormContainer>
   );
 }
 

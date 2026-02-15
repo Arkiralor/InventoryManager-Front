@@ -1,6 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 
-
 const baseTheme = {
   light: createTheme({
     palette: {

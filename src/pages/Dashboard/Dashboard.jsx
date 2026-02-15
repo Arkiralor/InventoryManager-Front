@@ -1,30 +1,73 @@
 import React from 'react';
 import { Box, Container, Paper } from '@mui/material';
-import './Dashboard.css';
+import { styled } from '@mui/material/styles';
 import Header from '../../components/Header.jsx';
 import NavigationMenu from '../../components/NavigationMenu.jsx';
 import UserDetails from '../../components/UserDetails.jsx';
 import Footer from '../../components/Footer.jsx';
+import { useAuth } from '../../contexts/AuthContext.jsx';
+import { debugLog } from '../../utils/logger.js';
 
-function Dashboard({ user }) {
+const PageContainer = styled(Box)(({ theme }) => ({
+  minHeight: '100vh',
+  backgroundColor: theme.palette.background.default,
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
+const MainContent = styled(Container)(({ theme }) => ({
+  flex: 1,
+  padding: theme.spacing(4, 0),
+}));
+
+const ContentGrid = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(3),
+  [theme.breakpoints.up('md')]: {
+    flexDirection: 'row',
+  },
+}));
+
+const UserDetailsPaper = styled(Paper)(({ theme }) => ({
+  minWidth: 200,
+  padding: theme.spacing(2),
+  borderRadius: theme.spacing(2),
+  boxShadow: theme.shadows[2],
+}));
+
+const MainContentPaper = styled(Paper)(({ theme }) => ({
+  flex: 1,
+  padding: theme.spacing(2),
+  borderRadius: theme.spacing(2),
+  boxShadow: theme.shadows[2],
+  [theme.breakpoints.up('md')]: {
+    marginLeft: theme.spacing(3),
+  },
+}));
+
+/**
+ * Dashboard page component
+ * @returns {JSX.Element} Dashboard page
+ */
+function Dashboard() {
+  const { user } = useAuth();
   const companyName = import.meta.env.COMPANY_NAME;
-  console.log('Dashboard companyName:', companyName);
+  debugLog('Dashboard companyName:', companyName);
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', display: 'flex', flexDirection: 'column' }}>
+    <PageContainer>
       <Header>{companyName || 'User Dashboard'}</Header>
       <NavigationMenu />
-      <Container sx={{ flex: 1, py: 4 }}>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
-          <Paper sx={{ minWidth: 200, p: 2, borderRadius: 2, boxShadow: 2 }}>
+      <MainContent>
+        <ContentGrid>
+          <UserDetailsPaper>
             <UserDetails user={user} />
-          </Paper>
-          <Paper sx={{ flex: 1, p: 2, borderRadius: 2, boxShadow: 2, ml: { md: 3 } }}>
-            Main Content Area
-          </Paper>
-        </Box>
-      </Container>
+          </UserDetailsPaper>
+          <MainContentPaper>Main Content Area</MainContentPaper>
+        </ContentGrid>
+      </MainContent>
       <Footer />
-    </Box>
+    </PageContainer>
   );
 }
 

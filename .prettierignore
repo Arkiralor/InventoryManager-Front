@@ -1,0 +1,28 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+build
+coverage
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode
+.idea
+
+# Config files
+.prettierignore
+.gitignore
+.eslintignore
+
+# Misc
+*.log

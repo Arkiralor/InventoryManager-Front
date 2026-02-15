@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    ".prettierignore": "plaintext",
+    ".gitignore": "ignore",
+    ".eslintignore": "ignore"
+  }
+}

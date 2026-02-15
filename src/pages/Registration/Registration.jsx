@@ -1,7 +1,31 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, Alert } from '@mui/material';
-import './Registration.css';
+import { styled } from '@mui/material/styles';
 
+const RegistrationContainer = styled(Box)(({ theme }) => ({
+  maxWidth: 400,
+  margin: '2rem auto',
+  padding: theme.spacing(3),
+  backgroundColor: theme.palette.background.paper,
+  borderRadius: theme.spacing(2),
+  boxShadow: theme.shadows[3],
+}));
+
+const RegistrationTitle = styled(Typography)(({ theme }) => ({
+  textAlign: 'center',
+  marginBottom: theme.spacing(2),
+}));
+
+const RegistrationForm = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(2),
+}));
+
+/**
+ * Registration page component
+ * @returns {JSX.Element} Registration page
+ */
 function Registration() {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
   const [error, setError] = useState('');
@@ -21,20 +45,11 @@ function Registration() {
   };
 
   return (
-    <Box
-      sx={{
-        maxWidth: 400,
-        margin: '2rem auto',
-        padding: 3,
-        bgcolor: 'background.paper',
-        borderRadius: 2,
-        boxShadow: 3,
-      }}
-    >
-      <Typography variant="h5" component="h2" sx={{ textAlign: 'center', mb: 2 }}>
+    <RegistrationContainer>
+      <RegistrationTitle variant="h5" component="h2">
         Register
-      </Typography>
-      <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      </RegistrationTitle>
+      <RegistrationForm component="form" onSubmit={handleSubmit}>
         <TextField
           label="Username"
           name="username"
@@ -65,11 +80,17 @@ function Registration() {
           fullWidth
         />
         {error && <Alert severity="error">{error}</Alert>}
-        <Button type="submit" variant="contained" color="primary" size="large" fullWidth>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          fullWidth
+        >
           Register
         </Button>
-      </Box>
-    </Box>
+      </RegistrationForm>
+    </RegistrationContainer>
   );
 }
 

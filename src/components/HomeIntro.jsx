@@ -1,20 +1,49 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Typography, Paper } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
+const IntroContainer = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(4),
+  textAlign: 'center',
+  borderRadius: theme.spacing(2),
+}));
+
+const IntroTitle = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+const IntroDescription = styled(Typography)(({ theme }) => ({
+  marginBottom: theme.spacing(3),
+}));
+
+/**
+ * HomeIntro component - displays introduction section on home page
+ * @param {Object} props - Component props
+ * @param {Function} props.onGetStarted - Callback function when Get Started button is clicked
+ * @returns {JSX.Element} HomeIntro component
+ */
 function HomeIntro({ onGetStarted }) {
   return (
-    <Paper elevation={3} sx={{ p: 4, textAlign: 'center', borderRadius: 2 }}>
-      <Typography variant="h4" sx={{ mb: 2 }}>
-        Manage your inventory efficiently
-      </Typography>
-      <Typography variant="body1" sx={{ mb: 3 }}>
+    <IntroContainer elevation={3}>
+      <IntroTitle variant="h4">Manage your inventory efficiently</IntroTitle>
+      <IntroDescription variant="body1">
         Track, update, and analyze your inventory with ease.
-      </Typography>
-      <Button variant="contained" color="primary" size="large" onClick={onGetStarted}>
+      </IntroDescription>
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={onGetStarted}
+      >
         Get Started
       </Button>
-    </Paper>
+    </IntroContainer>
   );
 }
+
+HomeIntro.propTypes = {
+  onGetStarted: PropTypes.func.isRequired,
+};
 
 export default HomeIntro;
