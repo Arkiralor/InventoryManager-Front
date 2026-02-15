@@ -1,17 +1,22 @@
 import React from 'react';
+import { Typography } from '@mui/material';
 
 function UserDetails({ user }) {
   return (
-    <section className="user-details">
-      <h3>User Details</h3>
+    <>
+      <Typography variant="h6" sx={{ mb: 1 }}>
+        User Details
+      </Typography>
       {user ? (
-        <div>
-          <div><strong>Email:</strong> {user}</div>
-        </div>
+        <Typography variant="body1">
+          <strong>Email:</strong> {user}
+        </Typography>
       ) : (
-        <div>No user data.</div>
+        <Typography variant="body2" color="text.secondary">
+          No user data.
+        </Typography>
       )}
-    </section>
+    </>
   );
 }
 

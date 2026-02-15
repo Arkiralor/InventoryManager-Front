@@ -1,29 +1,38 @@
 import React from 'react';
+import { Box, Typography, Link as MuiLink } from '@mui/material';
 
 function getCompanyInfo() {
-  // Support both VITE_ and plain env vars for compatibility
+  console.log('Environment variables:', {
+    name: import.meta.env.COMPANY_NAME,
+    address: import.meta.env.COMPANY_ADDRESS,
+    email: import.meta.env.COMPANY_EMAIL,
+    phone: import.meta.env.COMPANY_PHONE,
+  });
   return {
-    name: import.meta.env.VITE_COMPANY_NAME || import.meta.env.COMPANY_NAME,
-    address: import.meta.env.VITE_COMPANY_ADDRESS || import.meta.env.COMPANY_ADDRESS,
-    email: import.meta.env.VITE_COMPANY_EMAIL || import.meta.env.COMPANY_EMAIL,
-    phone: import.meta.env.VITE_COMPANY_PHONE || import.meta.env.COMPANY_PHONE,
+    name: import.meta.env.COMPANY_NAME,
+    address: import.meta.env.COMPANY_ADDRESS,
+    email: import.meta.env.COMPANY_EMAIL,
+    phone: import.meta.env.COMPANY_PHONE,
   };
 }
-
 
 function Footer() {
   const info = getCompanyInfo();
   return (
-    <footer className="dashboard-footer company-footer">
-      <div className="company-info">
-        <div className="company-name">{info.name}</div>
-        <div className="company-address">{info.address}</div>
-        <div className="company-contact">
-          <span>Email: <a href={`mailto:${info.email}`}>{info.email}</a></span>
-          <span> | Phone: <a href={`tel:${info.phone}`}>{info.phone}</a></span>
-        </div>
-      </div>
-    </footer>
+    <Box component="footer" sx={{ bgcolor: 'primary.dark', color: 'primary.contrastText', py: 3, textAlign: 'center' }}>
+      <Box sx={{ mb: 1 }}>
+        <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+          {info.name}
+        </Typography>
+        <Typography variant="body2" color="inherit">
+          {info.address}
+        </Typography>
+      </Box>
+      <Typography variant="body2" color="inherit">
+        Email: <MuiLink href={`mailto:${info.email}`} color="inherit">{info.email}</MuiLink>
+        {' | '}Phone: <MuiLink href={`tel:${info.phone}`} color="inherit">{info.phone}</MuiLink>
+      </Typography>
+    </Box>
   );
 }
 

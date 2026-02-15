@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box, Button, TextField, Typography, Alert } from '@mui/material';
 
 function LoginForm({ onLogin }) {
   const [email, setEmail] = useState('');
@@ -21,23 +22,57 @@ function LoginForm({ onLogin }) {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        width: '100%',
+        maxWidth: 350,
+        mx: 'auto',
+        bgcolor: 'background.paper',
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 3,
+      }}
+    >
+      <Typography variant="h5" component="h2" sx={{ mb: 2, textAlign: 'center' }}>
+        Login
+      </Typography>
+      <TextField
+        label="Email"
         type="email"
-        placeholder="Email"
         value={email}
         onChange={e => setEmail(e.target.value)}
+        variant="outlined"
+        required
+        fullWidth
       />
-      <input
+      <TextField
+        label="Password"
         type="password"
-        placeholder="Password"
         value={password}
         onChange={e => setPassword(e.target.value)}
+        variant="outlined"
+        required
+        fullWidth
       />
-      {error && <div className="login-error">{error}</div>}
-      <button type="submit">Login</button>
-    </form>
+      {error && (
+        <Alert severity="error" sx={{ mt: 1 }}>{error}</Alert>
+      )}
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        size="large"
+        sx={{ mt: 2 }}
+        fullWidth
+      >
+        Login
+      </Button>
+    </Box>
   );
 }
 

@@ -44,6 +44,24 @@
   background: #1a6ed8;
 }
 
+.login-register-link {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.login-register-link a {
+  color: #2d8cff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.login-register-link a:hover {
+  color: #1a6ed8;
+  text-decoration: underline;
+}
+
 .login-error {
   color: #e74c3c;
   font-size: 0.95rem;
